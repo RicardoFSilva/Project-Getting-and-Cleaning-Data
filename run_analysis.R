@@ -30,7 +30,7 @@ activity <- read.table("UCI HAR Dataset\\train\\y_train.txt")
 names(activity) <- c("ActivityId")
 measurements <- read.table("UCI HAR Dataset\\train\\x_train.txt")
 
-# Use only the six first columns from the measurments.
+# Use only the six first columns from the measurements.
 # These columns use mean and standard deviation.
 # From the total of 561 columns, other columns also use mean and standard deviation,
 # however, for the present assignmenet only these six are used:
@@ -83,7 +83,7 @@ dataTest <- cbind(subject, temp1, features, Type=rep("Test", nrows))
 
 # Prepare "Test" data (end) ############################################################################
 
-# Save Train and Test data in one single file, called data.txt
+# Save Train and Test data in one single file, called data1.txt
 
 # Save the table
 data <- rbind(dataTrain, dataTest)
@@ -94,7 +94,3 @@ write.table(data, "data1.txt", row.names=FALSE)
 data <- aggregate(data[, 4:9], by=list(data$Subject, data$Activity), mean)
 names(data) <- c("Subject", "Activity", names(data)[3:ncol(data)])
 write.table(data, "data2.txt", row.names=FALSE)
-
-# read the table
-data <- read.table("data1.txt", header=TRUE)
-
