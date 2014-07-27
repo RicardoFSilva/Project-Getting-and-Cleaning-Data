@@ -18,4 +18,4 @@ Only the six first columns of files x_train and x_test are used (the names are o
 The code on file "run_analysis.R" gives the details of all the operations to join and aggregated the data.
 The file CodeBook.md gives the details about the columns used on both files:
 - data1.txt
-- data2.txt)
+- data2.txt
