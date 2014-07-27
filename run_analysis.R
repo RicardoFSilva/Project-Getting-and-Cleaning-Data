@@ -86,11 +86,13 @@ dataTest <- cbind(subject, temp1, features, Type=rep("Test", nrows))
 # Save Train and Test data in one single file, called data1.txt
 
 # Save the table
-data <- rbind(dataTrain, dataTest)
-write.table(data, "data1.txt", row.names=FALSE)
+data1 <- rbind(dataTrain, dataTest)
+write.table(data1, "data1.txt", row.names=FALSE)
 
 
 # 5     Creates a second, independent tidy data set with the average of each variable for each activity and each subject
-data <- aggregate(data[, 4:9], by=list(data$Subject, data$Activity), mean)
-names(data) <- c("Subject", "Activity", names(data)[3:ncol(data)])
-write.table(data, "data2.txt", row.names=FALSE)
+data2 <- aggregate(data1[, 4:9], by=list(data1$Activity, data1$Subject), mean)
+names(data2) <- c("Activity", "Subject", names(data2)[3:ncol(data2)])
+
+# Writes the tidy data ordered by Activity and Subject
+write.table(data2[order(data2$Activity, data2$Subject), ], "data2.txt", row.names=FALSE)
